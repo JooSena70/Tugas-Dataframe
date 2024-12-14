@@ -38,3 +38,13 @@ df_list
 
 df_list.to_csv("TugasDataframe.csv", index = False)
 df_list.to_excel("TugasDataframe.xlsx", index = False)
+
+
+#NO 2
+total_sampah = 0
+for index, row in df_list.iterrows():
+    if row["Tahun"] == "2016": #pilih kolom yang akan di jalankan
+        total_sampah += row["Total Sampah(ton)"]
+
+# Menampilkan hasil
+print(f"Total produksi sampah di seluruh Kabupaten/Kota di Jawa Barat untuk tahun 2016 adalah {total_sampah:.2f} ton.")
