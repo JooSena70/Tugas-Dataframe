@@ -1,2 +1,3 @@
 # Tugas-Dataframe
-Syarata memenuhi tugas Pandas
+Syarat memenuhi tugas Pandas
+https://youtu.be/Jlfl7NgPkIk
