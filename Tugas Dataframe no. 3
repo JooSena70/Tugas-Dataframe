@@ -1,0 +1,20 @@
+#NO 3
+
+import pandas as pd
+
+df_main_sampah = pd.read_csv("data_produksi_sampah.csv") #Untuk mengakses dataset via file csv
+#dictionary kosong akan digunakan dalam perulangan untuk menyimpan sampah tahunan
+total = {} #Akan digunakan untuk menyimpan sampah tahunan
+
+for index, row in df_main_sampah.iterrows(): #itterrows digunakan untuk melakukan iterasi/pengulangan proses
+    tahun = row["tahun"] #kolom diambil dari file csv dengan nama tahun
+    jumlah_sampah = row["jumlah_produksi_sampah"] #kolom diambil dengan nama juml_prod_sampah
+    
+    #if akan melakukan pengecekkan dari tahun ke tahun dan akan di isi ke {total} yg semula kosong
+    if tahun in total:
+        total[tahun] += jumlah_sampah
+    else: #Kondisi else akan di eksekusi pertama krn data tahun belum ada pada {total}
+        total[tahun] = jumlah_sampah
+
+df_total = pd.DataFrame(list(total.items()), columns=["Tahun", "Total Sampah (ton)"])
+df_total
