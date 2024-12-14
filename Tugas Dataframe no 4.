@@ -1,0 +1,27 @@
+#NO 4
+
+import pandas as pd
+df_csv = pd.read_csv("data_produksi_sampah.csv")
+
+total = {}
+
+
+for index, row in df_csv.iterrows():
+    kota_kabupaten = row["nama_kabupaten_kota"]
+    tahun = row["tahun"]
+    jumlah_sampah = row["jumlah_produksi_sampah"]
+    
+    if kota_kabupaten not in total:
+        total[kota_kabupaten] = {} #memeriksa nama kota/kab
+    
+    if tahun in total[kota_kabupaten]:
+        total[kota_kabupaten][tahun] += jumlah_sampah #data sampah akan ditambahkan sesuai tahun yang dimasuki
+    else:
+        total[kota_kabupaten][tahun] = jumlah_sampah #kondisi else dijalankan terlebih dahulu, untuk menyimpan daftar tahun yang belum ada di di dictionary
+total
+
+#CONTOH. total = KAB BOGOR 1.7 ton jan-2023
+#        total = KAB BOGOR 1.7+2.5 = 4.2 Februari-2023 
+#        total = KAB BANDUNG 4.1 ton jan-2023
+#        total = KAB BANDUNG 4.1+5.2 = 9.3 feb-2023
+#        total = KAB BOGOR 2.7 ton jan-2024
